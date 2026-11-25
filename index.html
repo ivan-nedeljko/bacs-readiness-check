@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#660000">
+<title>BACS-Readiness-Check · TECHNE e.U.</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="kopf">
+  <div class="marke"><span class="wort">TECHNE e.U.</span><span class="kicker">BACS-READINESS-CHECK</span></div>
+  <div class="objektwahl">
+    <label for="objSel" class="sr">Objekt</label>
+    <select id="objSel"></select>
+    <button id="btnNeu" type="button" title="Neues Objekt anlegen">+ Objekt</button>
+  </div>
+</header>
+<nav class="tabs" id="tabs">
+  <button data-tab="objekt" class="aktiv" type="button">1 Objekt</button>
+  <button data-tab="funktionen" type="button">2 Funktionen</button>
+  <button data-tab="faeh" type="button">3 Fähigkeiten a–d</button>
+  <button data-tab="auswertung" type="button">4 Auswertung</button>
+  <button data-tab="daten" type="button">5 Daten</button>
+</nav>
+<main id="main">
+  <section id="tab-objekt" class="tab aktiv"></section>
+  <section id="tab-funktionen" class="tab"></section>
+  <section id="tab-faeh" class="tab"></section>
+  <section id="tab-auswertung" class="tab"></section>
+  <section id="tab-daten" class="tab"></section>
+</main>
+<footer class="fuss">
+  <p>Arbeitswerkzeug der TECHNE e.U. für die Bestandsaufnahme nach ÖNORM EN ISO 52120-1:2022 (Nichtwohngebäude). Beschreibungen sinngemäß mit Verweis auf die Funktionsnummern der Norm – kein Normtext; maßgeblich ist die Norm. Alle Eingaben bleiben auf diesem Gerät (Browserspeicher) – regelmäßig exportieren.</p>
+  <p id="versionInfo"></p>
+</footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="katalog.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

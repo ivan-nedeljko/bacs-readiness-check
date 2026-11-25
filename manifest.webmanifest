@@ -1,0 +1,11 @@
+{
+  "name": "BACS-Readiness-Check · TECHNE e.U.",
+  "short_name": "Readiness-Check",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#660000",
+  "lang": "de",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
