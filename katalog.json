@@ -1,5 +1,5 @@
 {
- "version": "1.1",
+ "version": "1.2",
  "stand": "2026-11-25",
  "norm": "ÖNORM EN ISO 52120-1:2022 (Tab. 6, Tab. B.1) – Verweise, kein Normtext",
  "regel": "Klasse je Typ = höchste in Nichtwohngebäuden erreichte Klasse; für C gilt der strengere Typ aus Tab. 6 und Tab. B.1.",
@@ -1451,7 +1451,8 @@
    "punkte": [
     {
      "id": "d1",
-     "t": "In Aufenthaltsräumen werden Temperatur und CO₂ laufend gemessen (Feuchte empfohlen)."
+     "t": "In den genutzten Räumen bzw. Bereichen (in der Regel je Raum nach Nutzung, z. B. Büro, Seminar, Restaurant, Rezeption) werden Temperatur, relative Feuchte und CO₂ laufend gemessen, wo nötig auch Feinstaub.",
+     "m": "Empfehlung EU-Leitlinien C/2025/6438, Anhang 10 Pkt. 3.2"
     },
     {
      "id": "d2",
@@ -1460,7 +1461,7 @@
     {
      "id": "d3",
      "t": "Grenzwerte werden angezeigt bzw. gemeldet.",
-     "m": "TECHNE-Prüfmaßstab, kein Gesetzeswortlaut: Grenzwerte im Bericht festlegen und begründen."
+     "m": "TECHNE-Prüfmaßstab, kein Gesetzeswortlaut: Grenzwerte im Bericht festlegen und begründen (Orientierung: Anhang 10 Pkt. 3.3, CO₂ als Abstand zur Außenluft)."
     }
    ]
   }
@@ -1490,11 +1491,11 @@
    "b290": "Abs. 3 – Pflicht besteht",
    "b70": "Abs. 4 – bis 31.12.2029",
    "licht": "über 290 kW bis 31.12.2027, über 70 kW bis 31.12.2029 (Abs. 3–5)",
-   "faeh": "Abs. 5 (vier Fähigkeiten)",
-   "vorbehalt": "sofern technisch und wirtschaftlich realisierbar (BACS)",
+   "faeh": "Abs. 5 Z 1–4 (vier Fähigkeiten; Beleuchtung zoniert, mit Belegungserkennung)",
+   "vorbehalt": "sofern technisch und wirtschaftlich realisierbar (BACS und Beleuchtung)",
    "adressat": "Eigentümer (über Strafbestimmung § 37)",
-   "inspektion": "nicht im Katalog – einzeln prüfen",
-   "pruef": "nur Sekundärquelle – Wortlaut vor Kundenaussage am RIS prüfen"
+   "inspektion": "nicht im Katalog – einzeln prüfen; Abs. 1: beim Tausch des Wärme- oder Kälteerzeugers Einzelraumregelung und hydraulischer Abgleich",
+   "pruef": "am Wortlaut geprüft (RIS, Fassung vom 25.11.2026)"
   },
   "B": {
    "name": "Burgenland",
@@ -1522,7 +1523,8 @@
   }
  },
  "schwelle_hinweise": [
-  "Heizung und Kühlung werden je für sich gegen die Schwelle geprüft (EU-Leitlinien zu Art. 13, Anhang 10 Pkt. 2.5).",
+  "Heizung und Kühlung werden je für sich gegen die Schwelle geprüft – maßgeblich ist die Leistung des Wärme- oder des Kälteerzeugers „für sich“ (EU-Leitlinien C/2025/6438, Anhang 10 Pkt. 2.5).",
+  "Der Vorbehalt „technisch und wirtschaftlich realisierbar“ ist eine eng auszulegende Ausnahme, keine Wahlmöglichkeit; wirtschaftlich heißt: Nutzen über der Lebensdauer höher als die Kosten (Anhang 10 Pkt. 5).",
   "Mehrere Erzeuger derselben Anlage zählen in der Regel zusammen.",
   "Gesucht ist die abgegebene Wärme- bzw. Kälteleistung, nicht die elektrische Leistungsaufnahme.",
   "Fernwärme: rechtlich offen – konservativ die Leistung der Übergabestation (sekundär) bzw. die Anschlussleistung laut Vertrag ansetzen.",

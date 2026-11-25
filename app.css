@@ -68,7 +68,9 @@ tr:nth-child(even) td{background:var(--bg)}
 .filter{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:8px 0}
 .filter input[type=search]{padding:8px;border:1px solid var(--grau);border-radius:4px;flex:1 1 200px}
 .fortschritt{font-size:14px;color:var(--grau)}
-.status-sel{padding:6px;border:1px solid var(--grau);border-radius:4px}
+.status-sel{padding:6px;border:1px solid var(--grau);border-radius:4px;min-width:140px}
+.feld label input[type=checkbox]{width:20px;height:20px;margin:0 6px 0 0;vertical-align:middle}
+.feld label:has(input[type=checkbox]){display:flex;align-items:center;margin-top:22px;font-weight:bold}
 .masstab{font-size:13px;color:var(--rot)}
 .fuss{max-width:1000px;margin:24px auto;padding:0 16px 24px;font-size:13px;color:var(--grau);border-top:1px solid var(--hell)}
 .toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--schwarz);color:var(--weiss);padding:8px 14px;border-radius:4px;font-size:14px;opacity:0;transition:opacity .3s;pointer-events:none}

@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   var K = window.KATALOG;
-  var APPVER = '1.0';
+  var APPVER = '1.0.1';
   var KW = { D: 1, C: 2, B: 3, A: 4 };
   var KL = ['', 'D', 'C', 'B', 'A'];
   var LS = 'techne-rc-v1';
@@ -153,16 +153,19 @@
     h += feld('Begangen von', 'begeher', o.begeher);
     h += '</div>';
     h += feld('Notizen zum Objekt (Zonen, Besonderheiten, Ansprechpartner vor Ort)', 'notiz', o.notiz, 'textarea');
-    h += '<div class="box rahmen-rot ergebnis"><h3>Einordnung</h3>' + b.text.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('');
+    h += '<div class="box rahmen-rot ergebnis" id="einordnung">' + einordnungHtml(o) + '</div>';
+    $('#tab-objekt').innerHTML = h;
+  }
+  // nur der Einordnungs-Kasten wird neu gezeichnet – Eingabefelder bleiben stehen (kein verlorener Tipp beim Feldwechsel)
+  function einordnungHtml(o) {
+    var b = betroffenheit(o), L = b.land, h = '<h3>Einordnung</h3>' + b.text.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('');
     if (L) {
       h += '<table><tr><th colspan="2">' + esc(L.name) + ' – ' + esc(L.gesetz) + '</th></tr>';
       [['über 290 kW', L.b290], ['über 70 kW', L.b70], ['Beleuchtungssteuerung', L.licht], ['Fähigkeiten', L.faeh], ['Vorbehalt', L.vorbehalt], ['Adressat', L.adressat], ['Inspektion', L.inspektion], ['Prüfstand Katalog', L.pruef]]
         .forEach(function (r) { h += '<tr><td>' + r[0] + '</td><td>' + esc(r[1]) + '</td></tr>'; });
       h += '</table>';
     }
-    h += '<details class="pruef"><summary>Regeln zur Leistung</summary><ul class="liste">' + K.schwelle_hinweise.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></details>';
-    h += '</div>';
-    $('#tab-objekt').innerHTML = h;
+    return h + '<details class="pruef"><summary>Regeln zur Leistung</summary><ul class="liste">' + K.schwelle_hinweise.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></details>';
   }
 
   function renderFunktionen(o) {
@@ -278,7 +281,7 @@
 
   function renderDaten(o) {
     var h = '<h2 class="unterstrich">Daten</h2>';
-    h += '<p>Alle Eingaben liegen nur in diesem Browser auf diesem Gerät. Nach jeder Begehung exportieren und die Datei im Projektordner ablegen (Ordner 02/Unterlagen bzw. laut Projekt). Ein Export lässt sich auf jedem Gerät wieder importieren.</p>';
+    h += '<p>Alle Eingaben liegen nur in diesem Browser auf diesem Gerät. Nach jeder Begehung exportieren und die Datei im Technik-Projektordner ablegen. Ein Export lässt sich auf jedem Gerät wieder importieren.</p>';
     h += '<div class="knopfreihe">' +
       (o ? '<button type="button" class="primaer" data-akt="export">Objekt exportieren (JSON)</button><button type="button" data-akt="csv">Funktionen als CSV</button><button type="button" data-akt="kopie">Objekt kopieren</button>' : '') +
       '<label class="nodruck" style="display:inline-flex;align-items:center;gap:6px;border:1px solid #000;border-radius:4px;padding:8px 12px;cursor:pointer">Importieren (JSON)<input type="file" id="imp" accept=".json,application/json" style="display:none"></label>' +
@@ -356,6 +359,11 @@
     else if (el.hasAttribute('data-fa')) { var p = el.getAttribute('data-fa'); o.fa[p] = o.fa[p] || {}; o.fa[p][el.getAttribute('data-k')] = wert; neu = el.tagName === 'SELECT'; }
     else return;
     speichern();
+    if (el.hasAttribute('data-o') && ui.tab === 'objekt') {
+      var ein = $('#einordnung'); if (ein && neu) ein.innerHTML = einordnungHtml(o);
+      if (el.getAttribute('data-o') === 'datum' || el.getAttribute('data-o') === 'name') { var opt = $('#objSel').options[$('#objSel').selectedIndex]; if (opt) opt.text = o.name + (o.datum ? ' · ' + o.datum : ''); }
+      return;
+    }
     if (neu && endgueltig) {
       var y = window.scrollY, fokus = document.activeElement && document.activeElement.id;
       setTimeout(function () { if (fokus) { var fe = document.getElementById(fokus); if (fe && fe !== document.activeElement) fe.focus(); } }, 0);

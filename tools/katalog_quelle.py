@@ -12,7 +12,7 @@ Aufruf:  py tools\\katalog_quelle.py   -> schreibt katalog.json und katalog.js i
 """
 import json, os
 
-VERSION = "1.1"  # 1.1: Hinweise 1.1, 1.9, 3.1, 4.2, 5.1, 6, 7.1 nach Kontrolllauf 25.11.2026
+VERSION = "1.2"  # 1.1: Hinweise nach Kontrolllauf 25.11.2026 · 1.2: NÖ § 44a am RIS, EU-Leitlinien Anhang 10 am Wortlaut (25.11.2026)
 STAND = "2026-11-25"
 
 GEWERKE = [
@@ -434,9 +434,10 @@ FAEH = [
     {"k": "d", "t": "d) Raumklima überwachen",
      "z": "Laufende Messung des Raumklimas in Aufenthaltsräumen.",
      "punkte": [
-        {"id": "d1", "t": "In Aufenthaltsräumen werden Temperatur und CO₂ laufend gemessen (Feuchte empfohlen)."},
+        {"id": "d1", "t": "In den genutzten Räumen bzw. Bereichen (in der Regel je Raum nach Nutzung, z. B. Büro, Seminar, Restaurant, Rezeption) werden Temperatur, relative Feuchte und CO₂ laufend gemessen, wo nötig auch Feinstaub.",
+         "m": "Empfehlung EU-Leitlinien C/2025/6438, Anhang 10 Pkt. 3.2"},
         {"id": "d2", "t": "Die Messwerte werden aufgezeichnet."},
-        {"id": "d3", "t": "Grenzwerte werden angezeigt bzw. gemeldet.", "m": MASSSTAB + ": Grenzwerte im Bericht festlegen und begründen."}]},
+        {"id": "d3", "t": "Grenzwerte werden angezeigt bzw. gemeldet.", "m": MASSSTAB + ": Grenzwerte im Bericht festlegen und begründen (Orientierung: Anhang 10 Pkt. 3.3, CO₂ als Abstand zur Außenluft)."}]},
 ]
 FAEH_STATUS = ["erfüllt", "teilweise", "nicht erfüllt", "nicht geprüft"]
 
@@ -452,10 +453,10 @@ LAND = {
     "N": {"name": "Niederösterreich", "gesetz": "§ 44a NÖ BO 2014 idF LGBl. 1/2026",
           "b290": "Abs. 3 – Pflicht besteht", "b70": "Abs. 4 – bis 31.12.2029",
           "licht": "über 290 kW bis 31.12.2027, über 70 kW bis 31.12.2029 (Abs. 3–5)",
-          "faeh": "Abs. 5 (vier Fähigkeiten)", "vorbehalt": "sofern technisch und wirtschaftlich realisierbar (BACS)",
+          "faeh": "Abs. 5 Z 1–4 (vier Fähigkeiten; Beleuchtung zoniert, mit Belegungserkennung)", "vorbehalt": "sofern technisch und wirtschaftlich realisierbar (BACS und Beleuchtung)",
           "adressat": "Eigentümer (über Strafbestimmung § 37)",
-          "inspektion": "nicht im Katalog – einzeln prüfen",
-          "pruef": "nur Sekundärquelle – Wortlaut vor Kundenaussage am RIS prüfen"},
+          "inspektion": "nicht im Katalog – einzeln prüfen; Abs. 1: beim Tausch des Wärme- oder Kälteerzeugers Einzelraumregelung und hydraulischer Abgleich",
+          "pruef": "am Wortlaut geprüft (RIS, Fassung vom 25.11.2026)"},
     "B": {"name": "Burgenland", "gesetz": "§ 34g Bgld. BauVO 2008 idF LGBl. 75/2026",
           "b290": "Abs. 6 Z 1 – Pflicht besteht", "b70": "Abs. 6 Z 2 – ab 31.12.2029",
           "licht": "über 290 kW ab 31.12.2027, über 70 kW ab 31.12.2029 (Abs. 8, ohne Vorbehalt)",
@@ -469,7 +470,8 @@ LAND = {
           "pruef": "nicht geprüft"},
 }
 SCHWELLE_HINWEISE = [
-    "Heizung und Kühlung werden je für sich gegen die Schwelle geprüft (EU-Leitlinien zu Art. 13, Anhang 10 Pkt. 2.5).",
+    "Heizung und Kühlung werden je für sich gegen die Schwelle geprüft – maßgeblich ist die Leistung des Wärme- oder des Kälteerzeugers „für sich“ (EU-Leitlinien C/2025/6438, Anhang 10 Pkt. 2.5).",
+    "Der Vorbehalt „technisch und wirtschaftlich realisierbar“ ist eine eng auszulegende Ausnahme, keine Wahlmöglichkeit; wirtschaftlich heißt: Nutzen über der Lebensdauer höher als die Kosten (Anhang 10 Pkt. 5).",
     "Mehrere Erzeuger derselben Anlage zählen in der Regel zusammen.",
     "Gesucht ist die abgegebene Wärme- bzw. Kälteleistung, nicht die elektrische Leistungsaufnahme.",
     "Fernwärme: rechtlich offen – konservativ die Leistung der Übergabestation (sekundär) bzw. die Anschlussleistung laut Vertrag ansetzen.",
