@@ -12,7 +12,7 @@ Aufruf:  py tools\\katalog_quelle.py   -> schreibt katalog.json und katalog.js i
 """
 import json, os
 
-VERSION = "1.0"
+VERSION = "1.1"  # 1.1: Hinweise 1.1, 1.9, 3.1, 4.2, 5.1, 6, 7.1 nach Kontrolllauf 25.11.2026
 STAND = "2026-11-25"
 
 GEWERKE = [
@@ -39,16 +39,17 @@ RAUM_TYP_H = [
     ("1", "Nur zentrale Regelung, im Raum selbst keine", "D"),
     ("2", "Regelung je Raum, nicht vernetzt (z. B. Thermostatkopf, einfacher Raumthermostat)", "C"),
     ("3", "Regelung je Raum, stetig und mit der Gebäudeautomation vernetzt", "B"),
-    ("3F", "Wie Typ 3, bei Flächenheizung oder -kühlung (z. B. Fußboden, Wand)", "A"),
-    ("4", "Wie Typ 3, zusätzlich mit Anwesenheitserkennung – nicht bei träger Flächenheizung/-kühlung", "A"),
+    ("3F", "Wie Typ 3, bei integrierter Flächenheizung (z. B. Fußboden, Wand)", "A"),
+    ("4", "Wie Typ 3, zusätzlich mit Anwesenheitserkennung – nicht bei träger Flächenheizung", "A"),
 ]
 fn("1.1", "H", "Raumtemperatur (Regelung im Raum)",
    "Wie die Temperatur am Heizkörper oder an der Heizfläche je Raum geregelt wird.",
    "In Zimmern und Büros nachsehen: Thermostatkopf, Raumthermostat oder Raumregler mit Busanschluss? "
    "Ist der Regler an die Gebäudeleittechnik angebunden (Sollwert zentral sichtbar und verstellbar)? "
-   "Gibt es eine Kopplung an die Anwesenheit (Präsenzmelder, Kartenschalter, Belegung aus der Hotelsoftware)?",
+   "Gibt es eine Anwesenheitserkennung im Raum (Präsenzmelder; Kartenschalter nur mit Begründung)?",
    RAUM_TYP_H, "TECHNE (Raumregler, GA) + HKLS (Ventile, Stellantriebe)",
-   h="Hotelzimmer mit Thermostatkopf = Typ 2 (C). Absenkung über Kartenschalter oder Buchungsstatus zählt als Anwesenheitserkennung.",
+   h="Hotelzimmer mit Thermostatkopf = Typ 2 (C). Absenkung über Kartenschalter: TECHNE-Auslegung als Anwesenheitserkennung im Bericht begründen, konservativ Typ 3. "
+     "Absenkung nach Buchungsstatus der Hotelsoftware ist ein Belegungsplan, keine Erkennung – bei 1.5 (Betriebszeiten) werten.",
    n="Typ 3F: Bei integrierten Flächensystemen gilt Typ 3 bereits als Klasse A (Fußnote a zu Tab. 6).")
 
 fn("1.2", "H", "Bauteilaktivierung (Heizen über Betondecken)",
@@ -102,7 +103,8 @@ fn("1.5", "H", "Betriebszeiten Heizung (Absenkbetrieb)",
     ("2", "Zeitplan mit optimiertem Start und Stopp", "B"),
     ("3", "Nach Bedarf bzw. Belegung", "A")],
    "TECHNE (GA) + HKLS",
-   h="Zeitprogramme stehen oft seit Jahren unverändert oder auf Dauerbetrieb – am Regler nachsehen, nicht nur fragen.")
+   h="Zeitprogramme stehen oft seit Jahren unverändert oder auf Dauerbetrieb – am Regler nachsehen, nicht nur fragen. "
+     "Absenkung nach Buchungsstatus der Hotelsoftware: Einordnung (Typ 1 oder Typ 3) im Bericht begründen.")
 
 ERZ_TYP = [("0", "Konstante Temperatur", "D"),
            ("1", "Gleitend nach Außentemperatur", "C"),
@@ -123,10 +125,10 @@ fn("1.8", "H", "Leistungsstufung des Wärmeerzeugers",
    "HKLS")
 fn("1.9", "H", "Reihenfolge mehrerer Wärmeerzeuger",
    "Wie bei mehreren Erzeugern entschieden wird, welcher läuft.",
-   "Nur bei mehr als einem Erzeuger. Kaskade: Umschaltung nur nach Laufzeit, feste Rangfolge, wechselnde Rangfolge nach Last oder Wirkungsgrad, oder mit Prognose?",
+   "Nur bei mehr als einem Erzeuger. Kaskade: Umschaltung nur nach Laufzeit, feste Rangfolge (auch reine Folge nach Last), wechselnde Rangfolge nach aktuellem Wirkungsgrad und Leistung der Erzeuger, oder mit Prognose?",
    [("0", "Nur nach Laufzeit", "D"),
-    ("1", "Feste Rangfolge", "C"),
-    ("2", "Wechselnde Rangfolge (z. B. nach Last oder Wirkungsgrad)", "B"),
+    ("1", "Feste Rangfolge (auch reine Folge nach Last)", "C"),
+    ("2", "Wechselnde Rangfolge nach aktuellem Wirkungsgrad und Leistung der Erzeuger", "B"),
     ("3", "Wechselnde Rangfolge mit Prognose", "A")],
    "HKLS")
 fn("1.10", "H", "Ladung des Heizungs-Pufferspeichers",
@@ -171,7 +173,7 @@ RAUM_TYP_K = [
     ("1", "Nur zentrale Regelung, im Raum selbst keine", "D"),
     ("2", "Regelung je Raum, nicht vernetzt (z. B. Split-Gerät mit eigener Fernbedienung)", "C"),
     ("3", "Regelung je Raum, stetig und mit der Gebäudeautomation vernetzt", "B"),
-    ("3F", "Wie Typ 3, bei Flächenkühlung (z. B. Kühldecke, Fußboden)", "A"),
+    ("3F", "Wie Typ 3, bei integrierter Flächenkühlung (z. B. Fußboden, Wand – nicht abgehängte Kühldecke)", "A"),
     ("4", "Wie Typ 3, zusätzlich mit Anwesenheitserkennung – nicht bei träger Flächenkühlung", "A"),
 ]
 fn("3.1", "K", "Raumtemperatur Kühlung (Regelung im Raum)",
@@ -255,9 +257,9 @@ fn("4.1", "L", "Luftmenge je Raum",
     ("2", "Nach Anwesenheit", "B"),
     ("3", "Nach Bedarf (z. B. CO₂)", "A")],
    "Lüftung + TECHNE (Präsenz, GA)")
-fn("4.2", "L", "Raumtemperatur über reine Luftanlagen",
-   "Wie die Raumtemperatur geregelt wird, wenn nur über Luft geheizt oder gekühlt wird.",
-   "Nur bei Luftanlagen ohne Heizkörper/Kühlflächen im Raum: Ein/Aus, stetige Regelung, oder optimierte Regelung?",
+fn("4.2", "L", "Raumtemperatur über die Lüftungsanlage",
+   "Wie die Raumlufttemperatur über die Zuluft der Lüftungsanlage geregelt wird.",
+   "Bei Lüftungsanlagen, die die Raumtemperatur führen – auch wenn zusätzlich Heizkörper oder Kühlflächen im Raum sind (dann zusätzlich 4.3 prüfen): Ein/Aus, stetige Regelung, oder optimierte Regelung?",
    [("0", "Ein/Aus", "D"), ("1", "Stetige Regelung", "C"), ("2", "Optimierte Regelung", "A")],
    "Lüftung + TECHNE (GA)")
 fn("4.3", "L", "Abstimmung Luft und Wasser (kombinierte Anlagen)",
@@ -322,7 +324,7 @@ fn("5.1", "B", "Licht nach Anwesenheit",
    "Je Zone ansehen: Gänge, Stiegenhäuser, Nebenräume, WC, Lager, Tiefgarage, Büro, Rezeption. "
    "Präsenz- oder Bewegungsmelder? Zeitschalter bzw. automatisches Ausschalten? Nur Taster?",
    [("0", "Nur Schalter oder Taster", "D"),
-    ("1", "Schalter plus automatisches Ausschalten (z. B. Zeit, Kartenschalter)", "D"),
+    ("1", "Schalter plus automatisches Ausschalten (mind. einmal täglich, z. B. abends; Zeitschalter, Kartenschalter)", "D"),
     ("2", "Melder schaltet ein und aus", "A"),
     ("3", "Von Hand ein, Melder schaltet aus", "A")],
    "TECHNE",
@@ -341,13 +343,13 @@ fn("5.2", "B", "Licht nach Tageslicht",
 # ---------------------------------------------------------------- 6 Sonnenschutz
 fn("6", "S", "Sonnenschutz",
    "Wie Jalousien, Markisen oder Rollläden gesteuert werden.",
-   "Kurbel, Taster, Wetterstation? Gibt es eine Verknüpfung mit Heizung/Kühlung und Licht (z. B. im Sommer beschatten, um Kühllast zu senken)?",
+   "Kurbel, Taster, Wetterstation? Fährt der Sonnenschutz automatisch nach der Sonne, um Überhitzung bzw. Kühllast zu senken? Gibt es eine Verknüpfung mit Heizung/Kühlung und Licht?",
    [("0", "Händisch", "D"),
-    ("1", "Motor, von Hand bedient", "D"),
-    ("2", "Motor, automatisch (z. B. Sonne, Wind, Zeit)", "C"),
+    ("1", "Motor, von Hand bedient (auch mit reiner Wind- oder Zeitautomatik)", "D"),
+    ("2", "Motor, automatisch zur Senkung von Überhitzung bzw. Kühllast (z. B. nach Sonne)", "C"),
     ("3", "Automatisch und abgestimmt mit Licht und Heizung/Kühlung", "A")],
    "Sonnenschutz + TECHNE (Steuerung)",
-   h="Ohne außenliegenden Sonnenschutz: als nicht vorhanden markieren. Motor mit Taster allein = D.")
+   h="Ohne Sonnenschutzeinrichtung: als nicht vorhanden markieren. Motor mit Taster, Windwächter oder Zeitfahrt allein = D.")
 
 # ---------------------------------------------------------------- 7 TGM
 fn("7.1", "T", "Sollwerte verstellen",
@@ -358,7 +360,7 @@ fn("7.1", "T", "Sollwerte verstellen",
     ("2", "Von zentraler Stelle", "B"),
     ("3", "Zentral, mit regelmäßigem Zurücksetzen der Nutzereingaben", "A")],
    "TECHNE",
-   h="Zurücksetzen beim Check-out = Typ 3.")
+   h="Zurücksetzen der Nutzereingaben (z. B. beim Check-out) zählt nur zusammen mit zentraler Verstellung als Typ 3; Raumbediengeräte allein zählen nicht.")
 fn("7.2", "T", "Betriebszeiten verwalten",
    "Wie die Betriebszeiten der Anlagen festgelegt werden.",
    "Werden Anlagen von Hand eingeschaltet, je Anlage mit eigenem Zeitplan, oder zentral mit anpassender Vorlaufzeit?",

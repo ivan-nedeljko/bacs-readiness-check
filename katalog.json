@@ -1,5 +1,5 @@
 {
- "version": "1.0",
+ "version": "1.1",
  "stand": "2026-11-25",
  "norm": "ÖNORM EN ISO 52120-1:2022 (Tab. 6, Tab. B.1) – Verweise, kein Normtext",
  "regel": "Klasse je Typ = höchste in Nichtwohngebäuden erreichte Klasse; für C gilt der strengere Typ aus Tab. 6 und Tab. B.1.",
@@ -39,7 +39,7 @@
    "g": "H",
    "t": "Raumtemperatur (Regelung im Raum)",
    "z": "Wie die Temperatur am Heizkörper oder an der Heizfläche je Raum geregelt wird.",
-   "p": "In Zimmern und Büros nachsehen: Thermostatkopf, Raumthermostat oder Raumregler mit Busanschluss? Ist der Regler an die Gebäudeleittechnik angebunden (Sollwert zentral sichtbar und verstellbar)? Gibt es eine Kopplung an die Anwesenheit (Präsenzmelder, Kartenschalter, Belegung aus der Hotelsoftware)?",
+   "p": "In Zimmern und Büros nachsehen: Thermostatkopf, Raumthermostat oder Raumregler mit Busanschluss? Ist der Regler an die Gebäudeleittechnik angebunden (Sollwert zentral sichtbar und verstellbar)? Gibt es eine Anwesenheitserkennung im Raum (Präsenzmelder; Kartenschalter nur mit Begründung)?",
    "typ": [
     {
      "nr": "0",
@@ -63,17 +63,17 @@
     },
     {
      "nr": "3F",
-     "text": "Wie Typ 3, bei Flächenheizung oder -kühlung (z. B. Fußboden, Wand)",
+     "text": "Wie Typ 3, bei integrierter Flächenheizung (z. B. Fußboden, Wand)",
      "k": "A"
     },
     {
      "nr": "4",
-     "text": "Wie Typ 3, zusätzlich mit Anwesenheitserkennung – nicht bei träger Flächenheizung/-kühlung",
+     "text": "Wie Typ 3, zusätzlich mit Anwesenheitserkennung – nicht bei träger Flächenheizung",
      "k": "A"
     }
    ],
    "w": "TECHNE (Raumregler, GA) + HKLS (Ventile, Stellantriebe)",
-   "h": "Hotelzimmer mit Thermostatkopf = Typ 2 (C). Absenkung über Kartenschalter oder Buchungsstatus zählt als Anwesenheitserkennung.",
+   "h": "Hotelzimmer mit Thermostatkopf = Typ 2 (C). Absenkung über Kartenschalter: TECHNE-Auslegung als Anwesenheitserkennung im Bericht begründen, konservativ Typ 3. Absenkung nach Buchungsstatus der Hotelsoftware ist ein Belegungsplan, keine Erkennung – bei 1.5 (Betriebszeiten) werten.",
    "n": "Typ 3F: Bei integrierten Flächensystemen gilt Typ 3 bereits als Klasse A (Fußnote a zu Tab. 6)."
   },
   {
@@ -238,7 +238,7 @@
     }
    ],
    "w": "TECHNE (GA) + HKLS",
-   "h": "Zeitprogramme stehen oft seit Jahren unverändert oder auf Dauerbetrieb – am Regler nachsehen, nicht nur fragen.",
+   "h": "Zeitprogramme stehen oft seit Jahren unverändert oder auf Dauerbetrieb – am Regler nachsehen, nicht nur fragen. Absenkung nach Buchungsstatus der Hotelsoftware: Einordnung (Typ 1 oder Typ 3) im Bericht begründen.",
    "n": null
   },
   {
@@ -327,7 +327,7 @@
    "g": "H",
    "t": "Reihenfolge mehrerer Wärmeerzeuger",
    "z": "Wie bei mehreren Erzeugern entschieden wird, welcher läuft.",
-   "p": "Nur bei mehr als einem Erzeuger. Kaskade: Umschaltung nur nach Laufzeit, feste Rangfolge, wechselnde Rangfolge nach Last oder Wirkungsgrad, oder mit Prognose?",
+   "p": "Nur bei mehr als einem Erzeuger. Kaskade: Umschaltung nur nach Laufzeit, feste Rangfolge (auch reine Folge nach Last), wechselnde Rangfolge nach aktuellem Wirkungsgrad und Leistung der Erzeuger, oder mit Prognose?",
    "typ": [
     {
      "nr": "0",
@@ -336,12 +336,12 @@
     },
     {
      "nr": "1",
-     "text": "Feste Rangfolge",
+     "text": "Feste Rangfolge (auch reine Folge nach Last)",
      "k": "C"
     },
     {
      "nr": "2",
-     "text": "Wechselnde Rangfolge (z. B. nach Last oder Wirkungsgrad)",
+     "text": "Wechselnde Rangfolge nach aktuellem Wirkungsgrad und Leistung der Erzeuger",
      "k": "B"
     },
     {
@@ -513,7 +513,7 @@
     },
     {
      "nr": "3F",
-     "text": "Wie Typ 3, bei Flächenkühlung (z. B. Kühldecke, Fußboden)",
+     "text": "Wie Typ 3, bei integrierter Flächenkühlung (z. B. Fußboden, Wand – nicht abgehängte Kühldecke)",
      "k": "A"
     },
     {
@@ -839,9 +839,9 @@
   {
    "id": "4.2",
    "g": "L",
-   "t": "Raumtemperatur über reine Luftanlagen",
-   "z": "Wie die Raumtemperatur geregelt wird, wenn nur über Luft geheizt oder gekühlt wird.",
-   "p": "Nur bei Luftanlagen ohne Heizkörper/Kühlflächen im Raum: Ein/Aus, stetige Regelung, oder optimierte Regelung?",
+   "t": "Raumtemperatur über die Lüftungsanlage",
+   "z": "Wie die Raumlufttemperatur über die Zuluft der Lüftungsanlage geregelt wird.",
+   "p": "Bei Lüftungsanlagen, die die Raumtemperatur führen – auch wenn zusätzlich Heizkörper oder Kühlflächen im Raum sind (dann zusätzlich 4.3 prüfen): Ein/Aus, stetige Regelung, oder optimierte Regelung?",
    "typ": [
     {
      "nr": "0",
@@ -1103,7 +1103,7 @@
     },
     {
      "nr": "1",
-     "text": "Schalter plus automatisches Ausschalten (z. B. Zeit, Kartenschalter)",
+     "text": "Schalter plus automatisches Ausschalten (mind. einmal täglich, z. B. abends; Zeitschalter, Kartenschalter)",
      "k": "D"
     },
     {
@@ -1158,7 +1158,7 @@
    "g": "S",
    "t": "Sonnenschutz",
    "z": "Wie Jalousien, Markisen oder Rollläden gesteuert werden.",
-   "p": "Kurbel, Taster, Wetterstation? Gibt es eine Verknüpfung mit Heizung/Kühlung und Licht (z. B. im Sommer beschatten, um Kühllast zu senken)?",
+   "p": "Kurbel, Taster, Wetterstation? Fährt der Sonnenschutz automatisch nach der Sonne, um Überhitzung bzw. Kühllast zu senken? Gibt es eine Verknüpfung mit Heizung/Kühlung und Licht?",
    "typ": [
     {
      "nr": "0",
@@ -1167,12 +1167,12 @@
     },
     {
      "nr": "1",
-     "text": "Motor, von Hand bedient",
+     "text": "Motor, von Hand bedient (auch mit reiner Wind- oder Zeitautomatik)",
      "k": "D"
     },
     {
      "nr": "2",
-     "text": "Motor, automatisch (z. B. Sonne, Wind, Zeit)",
+     "text": "Motor, automatisch zur Senkung von Überhitzung bzw. Kühllast (z. B. nach Sonne)",
      "k": "C"
     },
     {
@@ -1182,7 +1182,7 @@
     }
    ],
    "w": "Sonnenschutz + TECHNE (Steuerung)",
-   "h": "Ohne außenliegenden Sonnenschutz: als nicht vorhanden markieren. Motor mit Taster allein = D.",
+   "h": "Ohne Sonnenschutzeinrichtung: als nicht vorhanden markieren. Motor mit Taster, Windwächter oder Zeitfahrt allein = D.",
    "n": null
   },
   {
@@ -1214,7 +1214,7 @@
     }
    ],
    "w": "TECHNE",
-   "h": "Zurücksetzen beim Check-out = Typ 3.",
+   "h": "Zurücksetzen der Nutzereingaben (z. B. beim Check-out) zählt nur zusammen mit zentraler Verstellung als Typ 3; Raumbediengeräte allein zählen nicht.",
    "n": null
   },
   {

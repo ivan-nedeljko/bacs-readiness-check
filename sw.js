@@ -1,5 +1,5 @@
 // Offline-Speicher der App: online immer die neueste Fassung, offline die zuletzt geladene.
-var CACHE = 'rc-1.0.0';
+var CACHE = 'rc-1.0.1';
 var DATEIEN = ['./', 'index.html', 'app.css', 'app.js', 'katalog.js', 'manifest.webmanifest', 'icon.svg'];
 self.addEventListener('install', function (e) { e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(DATEIEN); })); self.skipWaiting(); });
 self.addEventListener('activate', function (e) {
