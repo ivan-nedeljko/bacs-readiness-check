@@ -455,7 +455,7 @@ LAND = {
           "licht": "über 290 kW bis 31.12.2027, über 70 kW bis 31.12.2029 (Abs. 3–5)",
           "faeh": "Abs. 5 Z 1–4 (vier Fähigkeiten; Beleuchtung zoniert, mit Belegungserkennung)", "vorbehalt": "sofern technisch und wirtschaftlich realisierbar (BACS und Beleuchtung)",
           "adressat": "Eigentümer (über Strafbestimmung § 37)",
-          "inspektion": "nicht im Katalog – einzeln prüfen; Abs. 1: beim Tausch des Wärme- oder Kälteerzeugers Einzelraumregelung und hydraulischer Abgleich",
+          "inspektion": "nicht im Katalog – einzeln prüfen; Abs. 1: beim Austausch des Wärme- oder Kälteerzeugers (sofern technisch und wirtschaftlich realisierbar) Temperaturregelung je Raum und, sofern zweckmäßig, hydraulischer Abgleich – unabhängig von 70 kW",
           "pruef": "am Wortlaut geprüft (RIS, Fassung vom 25.11.2026)"},
     "B": {"name": "Burgenland", "gesetz": "§ 34g Bgld. BauVO 2008 idF LGBl. 75/2026",
           "b290": "Abs. 6 Z 1 – Pflicht besteht", "b70": "Abs. 6 Z 2 – ab 31.12.2029",
